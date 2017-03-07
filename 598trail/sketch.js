@@ -7,14 +7,14 @@
 var computer; // saved image of computer
 var wagon; // saved image of wagon
 var wagonX = 900; // x location of image of wagon
-var dir = 3; // speed and direction of image of wagon
+var dir = 10; // speed and direction of image of wagon
 var font; // saved text font
 var page = 0; // screen start value
+var selection = "";
 var classDay = ["Class", "February 6, 2017"];
 var classDetails = ["Weather:  Snowing", "Health:  Good", "Pace:  Haven't Started"];
-var classOptions = ["Womp, womp. Class is cancelled, because of snow. What will you do?", 
-                    "1. Go to office hours over the weekend.", "2. Do nothing. Hope for the best.", "Which will you choose?"];
-var codingOptions = ["Many kinds of people make the journey to learn Javascript.","Are you:","1.  a total n00b","2.  dabble a bit", "3.  White Hat hacker wannabe", "What is your choice?" ];
+var classOptions = ["Oh no! Class is cancelled because of snow.", "What will you do?", "1. Go to office hours over the weekend.", "2. Do nothing. Hope for the best.", "Which will you choose?"];
+var codingOptions = ["Many kinds of people make the journey to learn Javascript.","Are you:","1.  a total n00b","2.  dabble a bit", "3.  hacker wannabe", "What is your choice?" ];
 var officeDay = ["Office Hours", "February 11, 2017"];
 var officeDetails = ["Weather:  Cloudy", "Health:  Fantastic", "Pace:  Almost there!"];
 var officeOptions = ["After spending time at office hours", 
@@ -73,9 +73,9 @@ if(mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters
 
 // ROLLING WAGON
 function pageTwo() {
-  image(wagon, wagonX, 250, 500, 175);
+  image(wagon, wagonX, 250, 600, 175);
   wagonX = wagonX - dir;
-  if(wagonX < -425) {
+  if(wagonX < -500) {
     page = page + 1;
   }
 }
@@ -86,6 +86,7 @@ function pageThree() {
   for(i = 0; i < codingOptions.length; i++) {
     text(codingOptions[i], 120, 150 + i * 60);
    }
+  text(selection, 800, 580);
 }
 
 // SNOW STORM & HOMEWORK
@@ -107,15 +108,15 @@ for (i = 0; i < 10; i++) {
   fill(255);
   rect(200, 200, 500, 150);
   for(i = 0; i < classDay.length; i++) {
-    text(classDay[i], 340, 50 + i * 30);
+    text(classDay[i], 220, 140 + i * 30);
    }
    for(i = 0; i < classDetails.length; i++) {
     fill(0);
-    text(classDetails[i], 240, 250 + i * 40);
+    text(classDetails[i], 220, 240 + i * 40);
    }
    for(i = 0; i < classOptions.length; i++) {
     fill(255);
-    text(classOptions[i], 240, 400 + i * 30);
+    text(classOptions[i], 220, 400 + i * 30);
    }
 }
 
@@ -124,7 +125,7 @@ function pageFive() {
   rect(200, 200, 500, 150);
   noStroke();
   for(i = 0; i < officeDay.length; i++) {
-    text(officeDay[i], 340, 50 + i * 30);
+    text(officeDay[i], 220, 140 + i * 30);
    }
    for(i = 0; i < officeDetails.length; i++) {
     fill(0);
@@ -143,9 +144,8 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  text(key, 300, 300);
   if(page == 2 && key == "1" || key == "2" || key == "3") {
-    fill(255);
+    selection = key
   } else if (page == 2 && keyCode == ENTER || key == RETURN) {
     page = 1 + page;
   } else if (page == 3 && keyCode == ENTER || key == RETURN) {

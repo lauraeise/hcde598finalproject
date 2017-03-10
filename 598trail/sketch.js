@@ -1,14 +1,15 @@
 // Created by Livia Brown & Laura Eise
-// Last edited on 3/6/2017
+// Last edited on 3/10/2017
 // Final Project: The 598 Trail
 // Learning Objectives: Demonstrate knowledge of variables, functions, parameters, conditional statements, loops, and arrays
 // Purpose: Experience "HCDE 598: Introduction to Computational Concepts" through the format of the classic computer game "The Oregon Trail"
 
-var computer; // saved image of computer
-var wagon; // saved image of wagon
-var wagonX = 900; // x location of image of wagon
+var computer; // image of computer
+var wagon; // image of wagon
+var wagonX = 900; // horizontal location of image of wagon
+var song; // mp3 of Oregon Trail song
 var dir = 10; // speed and direction of image of wagon
-var font; // saved text font
+var font; // text font
 var page = 0; // screen start value
 var selection = "";
 var classDay = ["Class", "February 6, 2017"];
@@ -24,12 +25,15 @@ function preload() { // pull in saved files from project folder
   computer = loadImage("computer.gif"); // load image
   wagon = loadImage("wagon.png"); // load image
   font = loadFont("OCRAEXT.TTF"); // load font
+  song = loadSound("song.mp3"); // load the mp3 file of Oregon Trail song
 }
 
 // create canvas
 function setup() {
   createCanvas(900, 600)
   textFont(font);
+  song.play(); // play mp3 file
+  song.setVolume(0.5); // set the volume of the mp3 file
 }
 
 function draw() {
@@ -37,7 +41,7 @@ function draw() {
   if(page == 0) {
     pageOne(); // start page
   } else if(page == 1) {
-    pageTwo(); // wagon roll page
+    wagonRoll(); // wagon roll page
   } else if(page == 2) {
     pageThree(); // coding level question
   } else if(page == 3) {
@@ -72,7 +76,7 @@ if(mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters
 }
 
 // ROLLING WAGON
-function pageTwo() {
+function wagonRoll() {
   image(wagon, wagonX, 250, 600, 175);
   wagonX = wagonX - dir;
   if(wagonX < -500) {
@@ -86,7 +90,7 @@ function pageThree() {
   for(i = 0; i < codingOptions.length; i++) {
     text(codingOptions[i], 120, 150 + i * 60);
    }
-  text(selection, 800, 580);
+  text(selection, 370, 451);
 }
 
 // SNOW STORM & HOMEWORK
@@ -145,9 +149,11 @@ function mousePressed() {
 
 function keyPressed() {
   if(page == 2 && key == "1" || key == "2" || key == "3") {
-    selection = key
+    selection = key;
   } else if (page == 2 && keyCode == ENTER || key == RETURN) {
     page = 1 + page;
+  } else if(page == 3) {
+    wagonRoll(); // wagon roll page
   } else if (page == 3 && keyCode == ENTER || key == RETURN) {
     page = 1 + page;
   }

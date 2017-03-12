@@ -1,5 +1,5 @@
 // Created by Livia Brown & Laura Eise
-// Last edited on 3/10/2017
+// Last edited on 3/12/2017
 // Final Project: The 598 Trail
 // Learning Objectives: Demonstrate knowledge of variables, functions, parameters, conditional statements, loops, and arrays
 // Purpose: Experience "HCDE 598: Introduction to Computational Concepts" through the format of the classic computer game "The Oregon Trail"
@@ -20,15 +20,14 @@ var page = 0; // screen start value
 var selection = "";
 var classDay = ["Class", "February 6, 2017"];
 var classDetails = ["Weather:  Snowing", "Health:  Good", "Pace:  Stalled"];
-var classOptions = ["Oh no! Class is cancelled due to snow.", " ",  "1. Go to office hours over the weekend.", "2. Do nothing and hope for the best.", " ", "What will you do?", " ","Press enter to continue coding."];
-var codingOptions = ["Many kinds of people make the journey to learn Javascript.","Are you:","1.  a total n00b","2.  dabble a bit", "3.  hacker wannabe", "What is your choice?","Press enter to continue coding."];
+var classOptions = ["Oh no! Class is cancelled due to snow.", " ",  "1. Go to office hours over the weekend.", "2. Do nothing and hope for the best.", " ", "What will you do?", " ","Select a number and press enter."];
+var codingOptions = ["Many kinds of people make the journey to learn Javascript.","Are you:","1.  a total n00b","2.  dabble a bit", "3.  hacker wannabe", "What is your choice?","Select a number and press enter."];
 var officeDay = ["Office Hours", "February 11, 2017"];
 var officeDetails = ["Weather:  Cloudy", "Health:  Excellent", "Pace:  Rapid"];
-var officeOptions = ["After spending time at office hours,", 
-                      "you understand the concept.", " ", "You go home and finish your project!", " ", "Press enter to continue coding."];
+var officeOptions = ["After spending time at office hours,", "you understand the concept.", " ", "You go home and finish your project!", " ", "Press enter to continue coding."];
 var finalProject = ["Class", "February 27, 2017"];
 var finalProjectDescription = ["Weather: Cloudy... BECAUSE SEATTLE", "Health: Fair", "Pace: Strenuous"];
-var finalProjectChoices = ["Your final project has been assigned.", " ", "1. You decide to wait until the last minute.", "2. You work really hard.", " ", "What will you do?", " ","Press enter to continue coding."];
+var finalProjectChoices = ["Your final project has been assigned.", " ", "1. You decide to wait until the last minute.", "2. You work really hard.", " ", "What will you do?", " ","Select a number and press enter."];
 var stayHome = ["At Home, Ignoring Problems", "February 11, 2017"];
 var stayDetails = ["Weather: Cloudy", "Health: Dire", "Pace: Stuck"];
 var failedAssignment = ["You decided to stay home and cannot", "figure out the assignment.", " ", "You drown in your own tears.", " ", "Press enter to continue coding."];
@@ -47,8 +46,8 @@ function preload() { // pull in saved files from project folder
 
 // create canvas
 function setup() {
-  createCanvas(900, 600)
-  textFont(font);
+  createCanvas(900, 600) // set canvas size
+  textFont(font); // set font size
   song.play(); // play mp3 file
   song.setVolume(0.5); // set the volume of the mp3 file
 }
@@ -79,10 +78,8 @@ function draw() {
 // start
 function pageOne() {
   image(computer, 275, 175, 300, 300); // computer image
-  
   fill(255); // button color
   rect(325, 500, 250, 50); // button size and placement
-
   noStroke(); // removes stroke from text
   fill(255); // title color
   textSize(60); // sets text size
@@ -90,14 +87,13 @@ function pageOne() {
   fill(0); // button color 
   textSize(30); // button text size
   text("Start Game", 355, 535); // button text and placement
-  
-if(mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters of Start Page button
-  fill(95, 95, 95);
-  rect(325, 500, 250, 50);
-  fill(255);
-  textSize(30); // button text size
-  text("Start Game", 355, 535); // button text and placement
-}
+  if(mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters of Start Page button
+    fill(95, 95, 95);
+    rect(325, 500, 250, 50);
+    fill(255);
+    textSize(30); // button text size
+    text("Start Game", 355, 535); // button text and placement
+  }
 }
 
 // rolling wagon
@@ -125,18 +121,14 @@ function pageFour() {
   rect(200, 120, 500, 130);
   for(i = 0; i < classDay.length; i++) {
     text(classDay[i], 220, 60 + i * 30);
-   }
-   for(i = 0; i < classDetails.length; i++) {
+  } for(i = 0; i < classDetails.length; i++) {
     fill(0);
     text(classDetails[i], 220, 160 + i * 30);
-   }
-   for(i = 0; i < classOptions.length; i++) {
+  }for(i = 0; i < classOptions.length; i++) {
     fill(255);
     text(classOptions[i], 220, 300 + i * 30);
-   }
-  if (hasTyped ==true) {
-    text(selection, 440, 451);
   }
+  text(selection, 440, 451);
 }
 
 // office hours
@@ -167,15 +159,13 @@ function pageSix() {
   noStroke();
   for(i = 0; i < stayHome.length; i++) {
     text(stayHome[i], 220, 60 + i * 30);
-   }
-   for(i = 0; i < stayDetails.length; i++) {
+  } for(i = 0; i < stayDetails.length; i++) {
     fill(0);
     text(stayDetails[i], 220, 200 + i * 30);
-   }
-   for(i = 0; i < failedAssignment.length; i++) {
+  } for(i = 0; i < failedAssignment.length; i++) {
     fill(255);
     text(failedAssignment[i], 220, 330 + i * 30);
-   }
+  }
 }
 
 // final project
@@ -189,35 +179,31 @@ function pageSeven() {
   rect(200, 150, 500, 130);
   for(i = 0; i < finalProject.length; i++) {
     text(finalProject[i], 220, 90 + i * 30);
-   }
-   for(i = 0; i < finalProjectDescription.length; i++) {
+  } for(i = 0; i < finalProjectDescription.length; i++) {
     fill(0);
     text(finalProjectDescription[i], 220, 190 + i * 30);
-   }
-   for(i = 0; i < finalProjectChoices.length; i++) {
+  } for(i = 0; i < finalProjectChoices.length; i++) {
     fill(255);
     text(finalProjectChoices[i], 220, 330 + i * 30);
-   }
+  }
   text(selection, 440, 481);
 }
 
 // dysentery
 function pageEight() {
   fill(255);
-  text("You did not finish the project.", 250, 210)
-  text("You die of dysentery.", 300, 250)
+  text("You did not finish the project.", 250, 210);
+  text("You die of dysentery.", 300, 250);
   image(tombstone, 220, 300, 400, 300);
   fill(0);
-  text("RIP Coder.", 400, 500)
-  
+  text("RIP Coder.", 400, 500);
   fill(95, 95, 95);
   rect(360, 530, 200, 50);
   fill(255);
   text("Replay", 425, 560); // button text and placement
-  
-if(mouseIsPressed && mouseX > 360 && mouseX < 560 && mouseY > 530 && mouseY < 580) { // parameters of replay button
-  fill(255);
-  page = 0;
+  if(mouseIsPressed && mouseX > 360 && mouseX < 560 && mouseY > 530 && mouseY < 580) { // parameters of replay button
+    fill(255);
+    page = 0;
   }
 }
 
@@ -236,10 +222,9 @@ function pageNine () {
   rect(310, 500, 250, 50);
   fill(255);
   text("Replay", 398, 530); // button text and placement
-  
-if(mouseIsPressed && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters of replay button
-  fill(255);
-  page = 0;
+  if(mouseIsPressed && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters of replay button
+    fill(255);
+    page = 0;
   }
 }
 
@@ -250,23 +235,27 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  if(key == "1" || key == "2" || key == "3") {
+  if((hasTyped == false || selection == "") && page !=2 && key == "1" || key == "2") {
     selection = key;
-  } else if(page == 2 && keyCode == ENTER || key == RETURN) {
-    page = 1 + page; // coding level
-  } else if(page == 3 && keyCode == ENTER || key == RETURN) {
-   hasTyped = false;
-   page = 1 + page; // first class
-  } else if(page == 4 && keyCode == ENTER || key == RETURN) {
-   hasTyped = false;
-   page = 1 + page; // 
-  } else if(page == 5 && keyCode == ENTER || key == RETURN) {
-   hasTyped = false;
-   page = 1 + page; // first class
-  } else if(page == 6 && keyCode == ENTER || key == RETURN) {
-   page = 1 + page; // first class
-  } else if(page == 7 && keyCode == ENTER || key == RETURN) {
-   page = 1 + page; // first class
+    hasTyped = true;
+  } else if((hasTyped == false || selection == "") && page == 2 && key == "1" || key == "2" || key == "3") {
+    selection = key;
+    hasTyped = true;
+  } else {
+    hasTyped = false;
+    selection = "";
+    if(page == 2 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page; // coding level
+    } else if(page == 3 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page; // first class
+    } else if(page == 4 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page;
+    } else if(page == 5 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page;
+    } else if(page == 6 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page;
+    } else if(page == 7 && keyCode == ENTER || key == RETURN) {
+      page = 1 + page;
+    }
   }
-  hasTyped = true;
 }

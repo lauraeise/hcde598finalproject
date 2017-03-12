@@ -5,6 +5,8 @@
 // Purpose: Experience "HCDE 598: Introduction to Computational Concepts" through the format of the classic computer game "The Oregon Trail"
 
 var computer; // image of computer
+var tombstone; // image of grave
+var fireworks; // image of fireworks
 var wagon; // image of wagon
 var wagonX = 900; // horizontal location of image of wagon
 var song; // mp3 of Oregon Trail song
@@ -13,17 +15,25 @@ var font; // text font
 var page = 0; // screen start value
 var selection = "";
 var classDay = ["Class", "February 6, 2017"];
-var classDetails = ["Weather:  Snowing", "Health:  Good", "Pace:  Haven't Started"];
-var classOptions = ["Oh no! Class is cancelled because of snow.", "What will you do?", "1. Go to office hours over the weekend.", "2. Do nothing. Hope for the best.", "Which will you choose?"];
+var classDetails = ["Weather:  Snowing", "Health:  Good", "Pace:  Stalled"];
+var classOptions = ["Oh no! Class is cancelled due to snow.", " ",  "1. Go to office hours over the weekend.", "2. Do nothing and hope for the best.", " ", "What will you do?"];
 var codingOptions = ["Many kinds of people make the journey to learn Javascript.","Are you:","1.  a total n00b","2.  dabble a bit", "3.  hacker wannabe", "What is your choice?" ];
 var officeDay = ["Office Hours", "February 11, 2017"];
-var officeDetails = ["Weather:  Cloudy", "Health:  Fantastic", "Pace:  Almost there!"];
-var officeOptions = ["After spending time at office hours", 
-                      "you understand the concept. You go home and finish your project!" ];
+var officeDetails = ["Weather:  Cloudy", "Health:  Excellent", "Pace:  Rapid"];
+var officeOptions = ["After spending time at office hours,", 
+                      "you understand the concept.", " ", "You go home and finish your project!", " ", "Press enter to continue coding."];
+var finalProject = ["Class", "February 27, 2017"];
+var finalProjectDescription = ["Weather: Cloudy... BECAUSE SEATTLE", "Health: Fair", "Pace: Strenuous"];
+var finalProjectChoices = ["Your final project has been assigned.", " ", "1. You decide to put it off until the last minute.", "2. You work really hard.", " ", "What will you do?"];
+var stayHome = ["At Home, Ignoring Problems", "February 11, 2017"];
+var stayDetails = ["Weather: Cloudy", "Health: Dire", "Pace: Stuck"];
+var failedAssignment = ["You decided to stay home and cannot", "figure out the assignment.", " ", "You drown in your own tears.", " ", "Press enter to continue coding."];
 
 function preload() { // pull in saved files from project folder
   computer = loadImage("computer.gif"); // load image
   wagon = loadImage("wagon.png"); // load image
+  tombstone = loadImage("tombstone.jpg"); // load image
+  fireworks = loadImage("fireworks.jpg"); // load image
   font = loadFont("OCRAEXT.TTF"); // load font
   song = loadSound("song.mp3"); // load the mp3 file of Oregon Trail song
 }
@@ -48,6 +58,14 @@ function draw() {
     pageFour(); // snow storm notification & homework question
   } else if(page == 4) {
     pageFive(); // office hours page
+  } else if(page == 5) {
+    pageSix(); // stay home
+  } else if(page == 6) {
+    pageSeven(); // final project
+  } else if(page == 7) {
+    pageEight(); // dysentery
+  } else if(page == 8) {
+    pageNine(); // do well on project
   }
 }
 
@@ -75,7 +93,7 @@ if(mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) { // parameters
 }
 }
 
-// ROLLING WAGON
+// rolling wagon
 function wagonRoll() {
   image(wagon, wagonX, 250, 600, 175);
   wagonX = wagonX - dir;
@@ -84,7 +102,7 @@ function wagonRoll() {
   }
 }
 
-// CODING LEVEL
+// coding level
 function pageThree() {
   textSize(18);
   for(i = 0; i < codingOptions.length; i++) {
@@ -93,52 +111,95 @@ function pageThree() {
   text(selection, 370, 451);
 }
 
-// SNOW STORM & HOMEWORK
+// snow storm & homework
 function pageFour() {
-  if (random(1) < 0.5) {   
-  // fill with a darker stroke
-  stroke(255);
-} else {
-  // otherwise fill with a lighter stroke
-  stroke(200, 200, 255);
-}
-// repeats 10 times
-for (i = 0; i < 10; i++) {
-  // save the random size (to draw a circle)
-  ellipseSize = random(5, 10);
-  // draw the circle at a random location
-  ellipse(random(1, 900), random(1, 150), ellipseSize, ellipseSize);
-}
   fill(255);
-  rect(200, 200, 500, 150);
+  rect(200, 120, 500, 130);
   for(i = 0; i < classDay.length; i++) {
-    text(classDay[i], 220, 140 + i * 30);
+    text(classDay[i], 220, 60 + i * 30);
    }
    for(i = 0; i < classDetails.length; i++) {
     fill(0);
-    text(classDetails[i], 220, 240 + i * 40);
+    text(classDetails[i], 220, 160 + i * 30);
    }
    for(i = 0; i < classOptions.length; i++) {
     fill(255);
-    text(classOptions[i], 220, 400 + i * 30);
+    text(classOptions[i], 220, 300 + i * 30);
+   }
+  text(selection, 440, 451);
+}
+
+// office hours
+function pageFive() {
+  fill(255);
+  rect(200, 120, 500, 130);
+  for(i = 0; i < officeDay.length; i++) {
+    text(officeDay[i], 220, 60 + i * 30);
+  } for(i = 0; i < officeDetails.length; i++) {
+    fill(0);
+    text(officeDetails[i], 220, 160 + i * 30);
+  } for(i = 0; i < officeOptions.length; i++) {
+    fill(255);
+    text(officeOptions[i], 220, 300 + i * 30);
+  }
+}
+
+// stay home
+function pageSix() {
+  fill(255);
+  rect(200, 120, 500, 130);
+  noStroke();
+  for(i = 0; i < stayHome.length; i++) {
+    text(stayHome[i], 220, 60 + i * 30);
+   }
+   for(i = 0; i < stayDetails.length; i++) {
+    fill(0);
+    text(stayDetails[i], 220, 160 + i * 30);
+   }
+   for(i = 0; i < failedAssignment.length; i++) {
+    fill(255);
+    text(failedAssignment[i], 220, 300 + i * 30);
    }
 }
 
-function pageFive() {
-  fill(255);
-  rect(200, 200, 500, 150);
+// final project
+function pageSeven() {
   noStroke();
-  for(i = 0; i < officeDay.length; i++) {
-    text(officeDay[i], 220, 140 + i * 30);
+  rect(200, 120, 500, 130);
+  noStroke();
+  for(i = 0; i < finalProject.length; i++) {
+    text(finalProject[i], 220, 60 + i * 30);
    }
-   for(i = 0; i < officeDetails.length; i++) {
+   for(i = 0; i < finalProjectDescription.length; i++) {
     fill(0);
-    text(officeDetails[i], 240, 250 + i * 40);
+    text(finalProjectDescription[i], 220, 160 + i * 30);
    }
-   for(i = 0; i < officeOptions.length; i++) {
+   for(i = 0; i < finalProjectChoices.length; i++) {
     fill(255);
-    text(officeOptions[i], 240, 400 + i * 30);
+    text(finalProjectChoices[i], 220, 300 + i * 30);
    }
+  text(selection, 440, 451);
+}
+
+// dysentery
+function pageEight() {
+  fill(255);
+  text("You did not finish the project.", 250, 210)
+  text("You die of dysentery.", 300, 250)
+  image(tombstone, 220, 300, 400, 300);
+  fill(0);
+  text("RIP Coder.", 400, 500)
+}
+
+// do well on project
+function pageNine () {
+  text("Congratulations!", 340, 110);
+  text("You finished the project and got an A in the class.", 150, 150);
+  image(fireworks, 330, 220, 200, 200);
+  fill(95, 95, 95);
+  rect(310, 500, 250, 50);
+  fill(255);
+  text("Replay", 398, 530); // button text and placement
 }
 
 function mousePressed() {
@@ -148,13 +209,19 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  if(page == 2 && key == "1" || key == "2" || key == "3") {
+  if(key == "1" || key == "2" || key == "3") {
     selection = key;
-  } else if (page == 2 && keyCode == ENTER || key == RETURN) {
-    page = 1 + page;
-  } else if(page == 3) {
-    wagonRoll(); // wagon roll page
-  } else if (page == 3 && keyCode == ENTER || key == RETURN) {
-    page = 1 + page;
+  } else if(page == 2 && keyCode == ENTER || key == RETURN) {
+    page = 1 + page; // coding level
+  } else if(page == 3 && keyCode == ENTER || key == RETURN) {
+   page = 1 + page; // first class
+  } else if(page == 4 && keyCode == ENTER || key == RETURN) {
+   page = 1 + page; // first class
+  } else if(page == 5 && keyCode == ENTER || key == RETURN) {
+   page = 1 + page; // first class
+  } else if(page == 6 && keyCode == ENTER || key == RETURN) {
+   page = 1 + page; // first class
+  } else if(page == 7 && keyCode == ENTER || key == RETURN) {
+   page = 1 + page; // first class
   }
 }

@@ -215,13 +215,14 @@ function pageEight() {
 }
 
 // This function works when the mouse is pressed. 
+// Parameters are set so mouse pressed only works on certain areas of canvas on page 0
 function mousePressed() {
   if(page == 0 && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) {
       page = 1 + page;
   }
 }
 
-// do well on project
+// Page Nine is the user's winning screen. 
 function pageNine () {
   text("Congratulations!", 340, 110);
   text("You finished the project and got an A in the class.", 150, 150);

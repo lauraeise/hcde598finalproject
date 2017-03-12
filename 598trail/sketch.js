@@ -75,7 +75,7 @@ function draw() {
   }
 }
 
-// start
+// The start page of the game. Includes a start game button, image, and title. 
 function pageOne() {
   image(computer, 275, 175, 300, 300); // computer image
   fill(255); // button color
@@ -96,7 +96,7 @@ function pageOne() {
   }
 }
 
-// rolling wagon
+// This is the wagon that rolls across the screen, which includes a small image of the computer. 
 function wagonRoll() {
   image(wagon, wagonX, 250, 600, 175);
   wagonX = wagonX - dir;
@@ -105,7 +105,7 @@ function wagonRoll() {
   }
 }
 
-// coding level
+// Page three has the coding level users can choose and pulls from an array. 
 function pageThree() {
   textSize(18);
   for(i = 0; i < codingOptions.length; i++) {
@@ -114,7 +114,8 @@ function pageThree() {
   text(selection, 370, 421);
 }
 
-// snow storm & homework
+// Page four tells user that class is cancelled and lists their choices via an array.
+// They make a selection via the instructions and click enter.
 function pageFour() {
   image(snowman, 420, 53, 78, 78);
   fill(255);
@@ -131,7 +132,8 @@ function pageFour() {
   text(selection, 440, 451);
 }
 
-// office hours
+// Page five shows the the user succeeded by going to office hours. 
+// Uses an array to list information and user clicks enter to move to next page. 
 function pageFive() {
   fill(34, 34, 255);
   rect(200, 135, 500, 78);
@@ -141,15 +143,17 @@ function pageFive() {
   for(i = 0; i < officeDay.length; i++) {
     text(officeDay[i], 220, 60 + i * 30);
   } for(i = 0; i < officeDetails.length; i++) {
-    fill(0);
-    text(officeDetails[i], 220, 240 + i * 30);
+      fill(0);
+      text(officeDetails[i], 220, 240 + i * 30);
   } for(i = 0; i < officeOptions.length; i++) {
-    fill(255);
-    text(officeOptions[i], 220, 380 + i * 30);
+      fill(255);
+      text(officeOptions[i], 220, 380 + i * 30);
   }
 }
 
-// stay home
+// Page six shows if the user decided to not go to office hours, and does not do well.
+// This shows an image of the wagon drowning. 
+// User presses enter to go. 
 function pageSix() {
   fill(22,131, 252);
   rect(200, 35, 500, 180);
@@ -160,15 +164,16 @@ function pageSix() {
   for(i = 0; i < stayHome.length; i++) {
     text(stayHome[i], 220, 60 + i * 30);
   } for(i = 0; i < stayDetails.length; i++) {
-    fill(0);
-    text(stayDetails[i], 220, 200 + i * 30);
+      fill(0);
+      text(stayDetails[i], 220, 200 + i * 30);
   } for(i = 0; i < failedAssignment.length; i++) {
-    fill(255);
-    text(failedAssignment[i], 220, 330 + i * 30);
+      fill(255);
+      text(failedAssignment[i], 220, 330 + i * 30);
+    }
   }
-}
 
-// final project
+// This page shows the final project details.
+// User chooses options of final project to move to next screen. 
 function pageSeven() {
   fill(198, 201, 206);
   for (x = 0; x < 12; x ++) {
@@ -180,16 +185,18 @@ function pageSeven() {
   for(i = 0; i < finalProject.length; i++) {
     text(finalProject[i], 220, 90 + i * 30);
   } for(i = 0; i < finalProjectDescription.length; i++) {
-    fill(0);
-    text(finalProjectDescription[i], 220, 190 + i * 30);
+      fill(0);
+      text(finalProjectDescription[i], 220, 190 + i * 30);
   } for(i = 0; i < finalProjectChoices.length; i++) {
-    fill(255);
-    text(finalProjectChoices[i], 220, 330 + i * 30);
+      fill(255);
+      text(finalProjectChoices[i], 220, 330 + i * 30);
   }
   text(selection, 440, 481);
 }
 
-// dysentery
+// Page eight shows if the user did nothing on their final project.
+// They die of dysentery.
+// Replay buttons allow them to click to start new with game. 
 function pageEight() {
   fill(255);
   text("You did not finish the project.", 250, 210);
@@ -207,6 +214,7 @@ function pageEight() {
   }
 }
 
+// This function works when the mouse is pressed. 
 function mousePressed() {
   if(page == 0 && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) {
       page = 1 + page;

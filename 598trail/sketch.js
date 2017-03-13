@@ -54,6 +54,7 @@ function setup() {
 
 function draw() {
   background(0); // canvas color
+  
   if(page == 0) {
     pageOne(); // start page
   } else if(page == 1) {
@@ -72,7 +73,8 @@ function draw() {
     pageEight(); // dysentery
   } else if(page == 8) {
     pageNine(); // do well on project
-  }
+  } 
+  
 }
 
 // start page content and functionality
@@ -102,7 +104,8 @@ function wagonRoll() {
   wagonX = wagonX - dir;
   if(wagonX < -500) {
     page = 2;
-  }
+    wagonX = 900;
+  } 
 }
 
 // coding level
@@ -201,7 +204,7 @@ function pageEight() {
   rect(360, 530, 200, 50);
   fill(255);
   text("Replay", 425, 560); // button text and placement
-  if(mouseX > 350 && mouseX < 560 && mouseY > 520 && mouseY < 590) { // parameters of replay button
+  if(mouseX > 350 && mouseX < 600 && mouseY > 500 && mouseY < 590) { // parameters of replay button
     fill(255);
     rect(360, 530, 200, 50);
     fill(0);
@@ -230,7 +233,7 @@ function mousePressed() {
   console.log(page);
   if(page == 0 && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) {
     page = 1 + page;
-  } else if (page == 7 && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) {
+  } else if (page == 7 && mouseX > 325 && mouseX < 575 && mouseY > 480 && mouseY < 600) {
     console.log("here");
     page = 0;
   } else if (page == 8 && mouseX > 325 && mouseX < 575 && mouseY > 450 && mouseY < 550) {

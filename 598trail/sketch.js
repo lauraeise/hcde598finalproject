@@ -236,7 +236,7 @@ function pageNine () {
   rect(310, 500, 250, 50);
   fill(255);
   text("Replay", 398, 530); // button text and placement
-  if(mouseX > 295 && mouseX < 475 && mouseY > 480 && mouseY < 600) { // parameters of replay button
+  if(mouseX > 295 && mouseX < 575 && mouseY > 480 && mouseY < 600) { // parameters of replay button
     fill(255);
     rect(310, 500, 250, 50);
     fill(0);

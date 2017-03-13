@@ -4,7 +4,7 @@
 // Learning Objectives: Demonstrate knowledge of variables, functions, parameters, conditional statements, loops and arrays
 // Purpose: Experience "HCDE 598: Introduction to Computational Concepts" through the format of the classic computer game "The Oregon Trail"
 
-var hasTyped = false; // sets up varible of typing selection is false
+var hasTyped = false; // set up variable of typing selection as false
 var computer;         // image of computer
 var tombstone;        // image of grave
 var fireworks;        // image of fireworks
@@ -14,10 +14,10 @@ var drowning;         // image of drowning wagon
 var wagon;            // image of wagon
 var wagonX = 900;     // horizontal location of image of wagon
 var song;             // mp3 of Oregon Trail song
-var dir = 10;         // speed and direction of image of wagon
+var dir = 5;         // speed and direction of image of wagon
 var font;             // text font
 var page = 0;         // screen start value
-var selection = "";   // creates open selection options
+var selection = "";   // open selection options
 var classDay = ["Class", "February 6, 2017"];
 var classDetails = ["Weather:  Snowing", "Health:  Good", "Pace:  Stalled"];
 var classOptions = ["Oh no! Class is cancelled due to snow.", " ",  "1. Go to office hours over the weekend.", 
@@ -52,43 +52,43 @@ function preload() {                            // pull in saved files from proj
 
 function setup() {
   createCanvas(900, 600)    // set canvas size
-  textFont(font);           // puts font into canvas
-  song.play();              // plays mp3 file
-  song.setVolume(0.5);      // sets the volume of the mp3 file
+  textFont(font);           // put font into canvas
+  song.play();              // play mp3 file
+  song.setVolume(0.5);      // set the volume of the mp3 file
 }
 
 function draw() {
-  background(0);            // sets canvas color
-  if(page == 0) {           // begins if statement that if page is at 0 run function pageOne
-    pageOne();              // start page runs
-  } else if(page == 1) {    // otherwise if page is at 1  play wagonRoll function
-    wagonRoll();            // wagon roll page
-  } else if(page == 2) {    // otherwise if page is at 2 run pageThree
-    pageThree();            // coding level question
-  } else if(page == 3) {    // otherwise if page is at 3 run pageFour
-    pageFour();             // runs pageFour, which runs the class page text
-  } else if(page == 4) {    // otherwise if page is at 4 run pageFive 
-    pageFive();             // run pageFive, which runs if you go to office hours
-  } else if(page == 5) {    // otherwise if page is at 5 run pageSix
-    pageSix();              // run pageSix, which runs if you don't do your homework
-  } else if(page == 6) {    // otherwise if page is at 6 run page
-    pageSeven();            // run pageSeven, which runs the final project
-  } else if(page == 7) {    // otherwise if page is at 7 run page
-    pageEight();            // run pageEight, which runs and gives you dystentery
-  } else if(page == 8) {    // otherwise if page is at 8 run page
-    pageNine();             // run pageNine, which runs if you finish the final
+  background(0);            // set canvas color
+  if(page == 0) {           // run function pageOne when page is at 0
+    pageOne();              // start page
+  } else if(page == 1) {    // otherwise play wagonRoll function (if page is at 1)
+    wagonRoll();            // start wagon roll page
+  } else if(page == 2) {    // otherwise run pageThree (if page is at 2)
+    pageThree();            // run coding level page
+  } else if(page == 3) {    // otherwise run pageFour (if page is at 3)
+    pageFour();             // run class page
+  } else if(page == 4) {    // otherwise run pageFive (if page is at 4)
+    pageFive();             // run office hours page
+  } else if(page == 5) {    // otherwise run pageSix (if page is at 5)
+    pageSix();              // run tears page
+  } else if(page == 6) {    // otherwise run PageSeven (if page is at 6)
+    pageSeven();            // run final project page
+  } else if(page == 7) {    // otherwise run pageEight (if page is at 7)
+    pageEight();            // run dystentery page
+  } else if(page == 8) {    // otherwise run pageNine (if page is at 8)
+    pageNine();             // run final page
   } 
 }
 
-// Creates the start page with an image, start button.
-// Button changes color within set parameters and clicking button moves to next page.
+// Create the start page with the wagon image and a start button
+// Start button changes color within set parameters; clicking the button moves code to next page.
 function pageOne() {
   image(computer, 275, 175, 300, 300);  // computer image
   fill(255);                            // button color
   rect(325, 500, 250, 50);              // button size and placement
-  noStroke();                           // removes stroke from text
+  noStroke();                           // remove stroke from text
   fill(255);                            // title color
-  textSize(60);                         // sets text size
+  textSize(60);                         // set text size
   text("The 598 Trail", 220, 125);      // create title
   fill(0);                              // button color 
   textSize(30);                         // button text size
@@ -103,8 +103,8 @@ function pageOne() {
   }
 }
 
-// Wagon image rolls across the screen.
-// If statement moves to page 2 and resets wagonX for replay
+// Wagon image rolls across the screen
+// If statement moves game to page 2 and resets wagonX for replay
 function wagonRoll() {
   image(wagon, wagonX, 250, 600, 175);
   wagonX = wagonX - dir;
@@ -114,14 +114,14 @@ function wagonRoll() {
   } 
 }
 
-// This page displays coding levels. 
-// Coding levels are displayed through arrays + for loops. 
+// This page displays coding levels 
+// Coding levels are displayed through arrays + for loop 
 function pageThree() {
   textSize(18);
   text(selection, 370, 421);
   for(i = 0; i < codingOptions.length; i++) {
     text(codingOptions[i], 120, 120 + i * 60);
-   }
+  }
 }
 
 // This page displays first class details with snowman.
@@ -131,18 +131,18 @@ function pageFour() {
   fill(255);
   rect(200, 120, 500, 130);
   text(selection, 440, 451);
-  for(i = 0; i < classDay.length; i++) {        // this displays class title & day of class
+  for(i = 0; i < classDay.length; i++) {        // display class title & day of class
     text(classDay[i], 220, 60 + i * 30);
-  } for(i = 0; i < classDetails.length; i++) {  // this displays explanation text
+  } for(i = 0; i < classDetails.length; i++) {  // display explanation text
     fill(0);
     text(classDetails[i], 220, 160 + i * 30);
-  } for(i = 0; i < classOptions.length; i++) {   // this displays options users can choose
+  } for(i = 0; i < classOptions.length; i++) {   // display options users can choose
     fill(255);
     text(classOptions[i], 220, 300 + i * 30);
   }
 }
 
-// Page five lists an image, shape, and text about going to office hours. 
+// Page five lists an image, shape, and text about going to office hours 
 function pageFive() {
   fill(34, 34, 255);
   rect(200, 135, 500, 78);
@@ -160,8 +160,8 @@ function pageFive() {
   }
 }
 
-// Page displays an image, shape, and text about not going to class. 
-// Page is about failing class assignment. 
+// Page displays an image, shape, and text about not going to class 
+// Page is about failing class assignment
 function pageSix() {
   fill(22,131, 252);
   rect(200, 35, 500, 180);
@@ -180,8 +180,8 @@ function pageSix() {
   }
 }
 
-// This lists details about the final project. 
-// Shapes form clouds through a for loop. 
+// This lists details about the final project
+// Shapes form clouds through a for loop
 function pageSeven() {
   fill(198, 201, 206);
   for (x = 0; x < 12; x ++) {
@@ -202,9 +202,9 @@ function pageSeven() {
   text(selection, 440, 481);
 }
 
-// If user chooses to do nothing on final project they go to this page.
-// Image, shape, and text explain they don't finish the project.
-// A replay button is displayed to start the game over. 
+// If user chooses to do nothing on final project they go to this page
+// Image, shape, and text explain they don't finish the project
+// A replay button is displayed to start the game over
 function pageEight() {
   fill(255);
   text("You did not finish the project.", 250, 210);
@@ -224,9 +224,9 @@ function pageEight() {
   }
 }
 
-// If user chooses to do nothing on final project they do well on this project.
-// Image, shape, and text explain they win!
-// A replay button is displayed to start the game over. 
+// If user chooses to do nothing on final project they do well on this project
+// Image, shape, and text explain that the user has won
+// A replay button is displayed to start the game over
 function pageNine () {
   fill(255);
   text("Congratulations!", 340, 110);
@@ -244,9 +244,8 @@ function pageNine () {
   }
 }
 
-// This function runs when the mouse pressed. 
-// If the mouse is on certain pages and within certain parameters 
-// it will go to a specific or go to the next page. 
+// This function runs when the mouse pressed
+// If the mouse is on certain pages and within certain parameters, it will go to the appropriate page
 function mousePressed() {
   if(page == 0 && mouseX > 325 && mouseX < 575 && mouseY > 500 && mouseY < 550) {
     page = 1 + page;
@@ -257,8 +256,8 @@ function mousePressed() {
   }
 }
 
-// This function allows user to select a number option.
-// User can enter option and it will go to specific page. 
+// This function allows user to select a number option
+// The user can enter an option, and it will go to specific page
 function keyPressed() {                                             // calls the keyPressed function
   if((hasTyped == true || selection == "") &&                       // if the user has typed a selection
       page != 2 && (key == "1" || key == "2")) {                    // and page is not 2, enter key 1 or 2
